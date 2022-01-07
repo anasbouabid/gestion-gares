@@ -1,0 +1,76 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./ressources/css/styles.css">
+    <link rel="icon" type="" href="./ressources//imgs/favicon.png">
+
+    <title>Gestion des gares routières</title>
+</head>
+<body>
+    <header>
+        <span class="logo">Logo</span>
+        <nav>
+            <ul id="nav-list">
+                <li><a href="#">Qui nous somme</a></li>
+                <li><a href="">man3rf</a></li>
+                <li><a href="">man3rf</a></li>
+                <li><a id="connexion-btn" href="#">Connexion</a></li>
+                <li><a id="inscription-btn" href="#">Inscription</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="recherche">
+            <div class="form-container">
+                <h2 class="titre-section">Consulter les horaires</h2>
+                <form action="" method="post" id="form-recherche">
+                    <div class="form-element">
+                        <label for="depart">Gare de départ</label>
+                        <input id="depart" name="depart" list="gares" type="text" required>
+                    </div>
+
+                    <svg id="reverse-choice" viewBox="64 64 896 896" focusable="false" class="" data-icon="swap" width="1em" height="1em" fill="currentColor" aria-hidden="true"><path d="M847.9 592H152c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h605.2L612.9 851c-4.1 5.2-.4 13 6.3 13h72.5c4.9 0 9.5-2.2 12.6-6.1l168.8-214.1c16.5-21 1.6-51.8-25.2-51.8zM872 356H266.8l144.3-183c4.1-5.2.4-13-6.3-13h-72.5c-4.9 0-9.5 2.2-12.6 6.1L150.9 380.2c-16.5 21-1.6 51.8 25.1 51.8h696c4.4 0 8-3.6 8-8v-60c0-4.4-3.6-8-8-8z"></path></svg>
+
+
+                    <div class="form-element">
+                        <label for="arrivee">Gare d'arrivée</label>
+                        <input id="arrivee" name="arrivee" list="gares" type="text" required>
+                    </div>
+
+                    <datalist id="gares">
+                        <option value="Settat">
+                        <option value="Berrchid">
+                        <option value="Casablanca">
+                        <option value="Mohammedia">
+                        <option value="Rabat">
+                        <option value="Sale">
+                        <option value="Kenitra">
+                    </datalist>
+
+                    <div class="form-element">
+                        <label for="date">Date de départ</label>
+                        <input id="date" name="date" type="date" required>
+                    </div>
+
+                    <div class="form-element">
+                        <input class="btn btn-mauve" type="submit" value="Chercher">
+                    </div>
+
+                </form>
+            </div>
+
+            <div>
+                <img id="voyage-img" src="./ressources/imgs/travel.png" alt="voyage illustration">
+            </div>
+        </section>
+
+        <div id="stats">
+            <!-- add a row with 3 cols: num of routes, num of autocars, num of tickets sold -->
+        </div>
+    </main>
+</body>
+</html>
