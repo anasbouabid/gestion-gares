@@ -273,7 +273,6 @@ footer{
     }
 
     #mobile-nav.menu-active {
-        display: block!important;
         position: absolute;
         top: 0;
         left: 0;
@@ -281,16 +280,19 @@ footer{
         height: 100vh;
         background: var(--blue);
         z-index: 2;
-        overflow: hidden;
-        padding: 2em 3em;
+        padding: 1em 0;
         list-style: none;
         font-size: 3rem;
         font-weight: 700;
         text-align: center;
+        display: flex!important;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
     }
 
     .menu-active li {
-        margin-bottom: 2em;
+        margin-bottom: 1em;
     }
 
     .menu-active a  {
