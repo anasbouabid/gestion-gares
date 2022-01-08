@@ -282,7 +282,7 @@ footer{
         background: var(--blue);
         z-index: 2;
         overflow: hidden;
-        padding: 3em 6em;
+        padding: 2em 3em;
         list-style: none;
         font-size: 3rem;
         font-weight: 700;
