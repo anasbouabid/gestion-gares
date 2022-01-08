@@ -19,12 +19,30 @@
                 <li><a href="">man3rf</a></li>
                 <li><a id="connexion-btn" href="#">Connexion</a></li>
                 <li><a id="inscription-btn" href="#">Inscription</a></li>
+                <li class="menu-mobile-icon">
+                    <a class="toggle-menu" href="#">
+                        <img src="./ressources/imgs/menu-burger.svg" alt="menu burger icone">
+                    </a>
+                </li>
+            </ul>
+
+            <ul id="mobile-nav">
+                <li><a href="#">Qui nous somme</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="">man3rf</a></li>
+                <li><a id="connexion-btn" href="#">Connexion</a></li>
+                <li><a id="inscription-btn" href="#">Inscription</a></li>
+                <li class="menu-mobile-icon">
+                    <a class="toggle-menu" href="#">
+                        <img src="./ressources/imgs/close.svg" alt="menu close">
+                    </a>
+                </li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section class="container">
+        <section id="recherche" class="container">
             <div class="form-container">
                 <h2 class="titre-section">Consulter les horaires</h2>
                 <form action="" method="post" id="form-recherche">
@@ -68,7 +86,7 @@
             </div>
         </section>
 
-        <section class="container">
+        <section id="stats" class="container">
             <div class="stat">
                 <img class="stat-icon" src="./ressources/imgs/trajet.svg" alt="Trajet icon">
                 <div class="stat-info">
@@ -80,7 +98,7 @@
                 <img class="stat-icon" src="./ressources/imgs/bus.svg" alt="Bus icon">
                 <div class="stat-info">
                     <h3>1234</h3>
-                    <h5>OPÉRATEURS D'AUTOBUS</h5>
+                    <h5>Autocars</h5>
                 </div>
             </div>
             <div class="stat">
@@ -92,8 +110,7 @@
             </div>
         </section>
 
-        <!-- Download mobile apps -->
-        <section class="container">
+        <section id="apps-mobile" class="container">
             <div class="illustration-container">
                 <img id="voyage-img" src="./ressources/imgs/mobile-app.png" alt="app mobile illustration">
             </div>
@@ -127,8 +144,10 @@
         </div>
 
         <div>
-            <p>© 2021 Gestion Gares - Tous droits réservés</p>
+            <p class="copyright">© 2021 Gestion Gares - Tous droits réservés</p>
         </div>
     </footer>
+
+    <script src="./ressources/js/index.js"></script>
 </body>
 </html>
