@@ -8,7 +8,7 @@
 
 :root {
     --orange: #f15c38;
-    --mauve: #3676fb;
+    --blue: #3676fb;
 }
 
 html {
@@ -103,6 +103,7 @@ main {
     padding: 3em 5em;
     border-radius: 1.5em;
     display: flex;
+    margin-bottom: 2.5em;
 }
 
 .form-container {
@@ -115,6 +116,7 @@ main {
 
 .titre-section {
     margin-bottom: .7em;
+    color: var(--blue);
 }
 
 #form-recherche {
@@ -169,7 +171,43 @@ main {
     font-size: 1.6rem;
 }
 
-.btn-mauve {
-    background: var(--mauve);
+.btn-blue {
+    background: var(--blue);
     color: #ffffff;
+}
+
+
+#stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #ffffff;
+    padding: 3em 5em;
+    border-radius: 1.5em;
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+}
+
+.stat-icon {
+    display: inline-block;
+    max-width: 100%;
+    width: 7rem;
+    fill: var(--orange);
+}
+
+.stat-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 2em;
+}
+
+.stat-info h3 {
+    color: var(--blue);
+}
+
+.stat-info h5 {
+    color: #717171;
 }
