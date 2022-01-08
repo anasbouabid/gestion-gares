@@ -6,6 +6,14 @@
     padding: 0;
 }
 
+img {
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+}
+
 :root {
     --orange: #f15c38;
     --blue: #3676fb;
@@ -47,6 +55,7 @@ body {
     display: flex;
     flex-direction: column;
     background: #dedede;
+    overflow-x: hidden;
 }
 
 header {
@@ -71,7 +80,6 @@ header {
 }
 
 #nav-list a {
-    text-decoration: none;
     color: #151515;
 }
 
@@ -98,12 +106,14 @@ main {
     padding: 0 4em;
 }
 
-#recherche {
+.container {
     background: #ffffff;
     padding: 3em 5em;
     border-radius: 1.5em;
     display: flex;
     margin-bottom: 2.5em;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .form-container {
@@ -176,16 +186,6 @@ main {
     color: #ffffff;
 }
 
-
-#stats {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #ffffff;
-    padding: 3em 5em;
-    border-radius: 1.5em;
-}
-
 .stat {
     display: flex;
     align-items: center;
@@ -210,4 +210,33 @@ main {
 
 .stat-info h5 {
     color: #717171;
+}
+
+
+.illustration-container {
+    width: 35%;
+}
+
+.apps-mobile {
+    text-align: center;
+}
+
+footer{
+    display: flex;
+    flex-direction: column;
+    padding: 1.5em 5em;
+    background: var(--orange);
+    color: #ffffff;
+    font-size: 1.6rem;
+    align-items: center;
+}
+
+.sm-icons img{
+    width: 2.5em;
+    transition: linear 200ms;
+}
+
+.sm-icons img:hover{
+    background: var(--blue);
+    border-radius: 10px;
 }
