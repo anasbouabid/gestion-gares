@@ -16,22 +16,29 @@ toggleMenuBtn.forEach(el => {
 
 
 // Modals
-const connexionBtn = document.querySelector("#connexion-btn");
-const inscriptionBtn = document.querySelector("#inscription-btn");
+const connexionBtns = document.querySelectorAll("#connexion-btn");
+const inscriptionBtns = document.querySelectorAll("#inscription-btn");
 const connexionModal = document.querySelector("#connexion-modal");
 const inscriptionModal = document.querySelector("#inscription-modal");
 const modals = document.querySelectorAll(".modal-container");
 const closeModalBtns = document.querySelectorAll(".modal-close");
 
-connexionBtn.addEventListener("click", () => {
-    connexionModal.classList.add("modal-active");
-    document.body.style.position = 'fixed';
+
+connexionBtns.forEach(connexionBtn => {
+    connexionBtn.addEventListener("click", () => {
+        connexionModal.classList.add("modal-active");
+        document.body.style.position = 'fixed';
+    });
 });
 
-inscriptionBtn.addEventListener("click", () => {
-    inscriptionModal.classList.add("modal-active");
-    document.body.style.position = 'fixed';
+inscriptionBtns.forEach(inscriptionBtn => {
+    inscriptionBtn.addEventListener("click", () => {
+        inscriptionModal.classList.add("modal-active");
+        document.body.style.position = 'fixed';
+    });
 });
+
+
 
 function closeModal(modal) {
     modal.classList.remove("modal-active");

@@ -156,7 +156,7 @@ main {
 input {
     border: 1px solid #cccccc;
     border-radius: 0;
-    height: 3em;
+    height: 2.5em;
     width: 100%;
     margin-bottom: 1em;
     padding: 0 2em;
@@ -301,7 +301,7 @@ footer{
 .modal-header {
     display: flex;
     align-items: center;
-    margin-bottom: 2em;
+    margin-bottom: 1em;
 }
 
 .modal-titre {
@@ -319,6 +319,26 @@ footer{
 #connexion-form, #inscription-form {
     display: flex;
     flex-direction: column;
+}
+
+.sexe {
+    display: flex;
+    margin-bottom: 1em;
+    align-items: center;
+}
+
+.sexe input {
+    width: 2em;
+    margin-right: .5em;
+
+}
+
+.sexe label {
+    margin-right: 2.5em;
+}
+
+.sexe * {
+    margin: 0;
 }
 
 

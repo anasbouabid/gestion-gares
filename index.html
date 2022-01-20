@@ -3,6 +3,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Plateform de consultation des horraires et reservation des ticket d'autocars">
+    <meta name="keywords" content="Ticket, Billet, Autocar, garres, gare routières, horraires">
 
     <link rel="stylesheet" href="./ressources/css/styles.css">
     <link rel="icon" type="" href="./ressources//imgs/favicon.png">
@@ -180,7 +182,7 @@
                 <img class="modal-close" src="./ressources/imgs/close.svg" alt="modal close">
             </div>
             <div class="modal-body">
-                <form id="inscription-form" action="/login" method="POST">
+                <form id="inscription-form" action="/register" method="POST">
                     <label for="nom">Nom: </label>
                     <input type="text" name="nom" required>
 
@@ -197,9 +199,11 @@
                     <input type="password" name="mdp2" required>
 
                     <label for="mdp">Sexe: </label>
-                    <div>
-                        <input type="radio" name="sexe" value="homme">Homme
-                        <input type="radio" name="sexe" value="femme">Femme
+                    <div class="sexe">
+                        <input type="radio" name="sexe" id="radio-homme" value="homme" required>
+                        <label for="radio-homme">Homme</label>
+                        <input type="radio" name="sexe" id="radio-femme" value="femme" required>
+                        <label for="radio-femme">Femme</label>
                     </div>
 
                     <input class="btn btn-orange" type="submit" value="Inscription">
