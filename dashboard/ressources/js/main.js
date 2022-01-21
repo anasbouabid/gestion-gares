@@ -1,6 +1,3 @@
-import data from './data.js'
-
-
 const sideMenu = document.querySelector("#side-menu");
 const burgerMenuBtn = document.querySelector("#burger-menu");
 
@@ -12,17 +9,8 @@ burgerMenuBtn.onclick = (e) => {
 
 
 // Modals
-const ajouterBtn = document.querySelector("#ajouter-btn");
-const ajouterModal = document.querySelector("#ajouter-modal");
 const modals = document.querySelectorAll(".modal-container");
 const closeModalBtns = document.querySelectorAll(".modal-close");
-
-
-ajouterBtn.addEventListener("click", () => {
-    ajouterModal.classList.add("modal-active");
-    document.body.style.position = 'fixed';
-});
-
 
 function closeModal(modal) {
     modal.classList.remove("modal-active");
@@ -42,15 +30,4 @@ closeModalBtns.forEach(e => {
         closeModal(e.target.parentNode.parentNode.parentNode);
         console.log(e.target.parentNode.parentNode.parentNode)
     });
-});
-
-
-// -----------
-const villesSelect = document.querySelector("#villes-select");
-
-data.villes.forEach(ville => {
-    let option = document.createElement("option");
-    option.value = ville.toLowerCase();
-    option.innerText = ville.toUpperCase();
-    villesSelect.appendChild(option);
 });
