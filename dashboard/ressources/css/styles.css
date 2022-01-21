@@ -20,6 +20,37 @@ html {
     src: url('../fonts/Nunito/Nunito-VariableFont_wght.ttf')  format('truetype')
 }
 
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: url(../fonts/material/MaterialIcons-Regular.eot);
+    src: local('Material Icons'),
+      local('MaterialIcons-Regular'),
+      url(../fonts/material/MaterialIcons-Regular.woff2) format('woff2'),
+      url(../fonts/material/MaterialIcons-Regular.woff) format('woff'),
+      url(../fonts/material/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: 'liga';
+    margin-right: .3em;
+}
+
 h1 {
     font-size: 4rem;
 }
@@ -45,6 +76,7 @@ img {
 
 a {
     text-decoration: none;
+    color: #ffffff;
 }
 
 li {
@@ -58,7 +90,7 @@ body {
     font-weight: 400;
     display: flex;
     background: #dedede;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 main {
@@ -67,11 +99,18 @@ main {
 }
 
 #side-menu {
-    min-width: 250px;
+    min-width: 200px;
     max-width: 325px;
     width: 20%;
     background: #333333;
     color: #ffffff;
+    transition: All ease-in-out 200ms;
+}
+
+.menu-hidden {
+    min-width: 0!important;
+    width: 0!important;
+    opacity: 0;
 }
 
 .nav-logo {
@@ -86,9 +125,32 @@ main {
     height: calc(100vh - 50px);
     display: flex;
     flex-direction: column;
-    padding: 1.5em 2em 0;
     font-size: 1.8rem;
-    overflow-y: auto;
+    padding: 1em 0;
+}
+
+#side-nav li {
+    padding: .65em 1em;
+    margin-bottom: .1em;
+    display: flex;
+    align-items: center;
+    transition: ease 150ms;
+}
+
+#side-nav li:hover {
+    background: #222222;
+    font-weight: 700;
+}
+
+.active {
+    background: #222222;
+    padding-left: .7em!important;
+    border-left: .3em solid var(--orange);
+    font-weight: 700;
+}
+
+.side-nav-bottom-element {
+    margin-top: auto;
 }
 
 
@@ -97,16 +159,12 @@ main {
 }
 
 
-/* 
-    Header
-*/
-
 #header {
     height: 50px;
     display: flex;
     background: var(--orange);
     width: 100%;
-    padding: .5em 2em;
+    padding: .5em 3em;
     align-items: center;
     justify-content: space-between;
 }
@@ -120,6 +178,9 @@ main {
     display: flex;
     align-items: center;
     color: #ffffff;
+}
+
+.user:hover {
     font-weight: 700;
 }
 
@@ -128,4 +189,25 @@ main {
     margin-right: .5em;
     border-radius: 100%;
 
+}
+
+
+#main-content {
+    display: flex;
+    flex-direction: column;
+    padding: 2em 2em 0;
+}
+
+.container {
+    background: #ffffff;
+    border-radius: .7em;
+    padding: 1em 2em;
+    display: flex;
+    flex-direction: column;
+}
+
+.crud-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
