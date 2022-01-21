@@ -1,0 +1,42 @@
+
+.crud-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.crud-header-actions {
+    display: flex;
+    justify-content: stretch;
+}
+
+#recherche-input {
+    margin-right: .5em;
+    padding: .3em .5em;
+}
+
+.crud-body {
+    margin-top: 3em;
+}
+
+#data-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 1em;
+    font-size: 1.6rem;
+}
+
+#data-table td,th {
+    border-bottom: 1px solid var(--orange);
+    text-align: left;
+    padding: .3em .4em;
+}
+
+#data-table tbody tr:nth-child(even) {
+    background: #f8f8f8;
+}
+
+.action:hover {
+    cursor: pointer;
+    color: var(--orange);
+}
