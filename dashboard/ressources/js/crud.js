@@ -56,7 +56,6 @@ function modifierGare(id) {
         }
     })
 }
-window.modifierGare = modifierGare
 
 
 function modifierEntreprise(id) {
@@ -73,7 +72,6 @@ function modifierEntreprise(id) {
         }
     })
 }
-window.modifierEntreprise = modifierEntreprise
 
 
 function modifierAutocar(id) {
@@ -100,7 +98,6 @@ function modifierAutocar(id) {
         }
     })
 }
-window.modifierGare = modifierGare
 
 
 function modifierVoyage(id) {
@@ -135,7 +132,34 @@ function modifierVoyage(id) {
         }
     })
 }
-window.modifierGare = modifierGare
+
+
+
+function modifierTarif(id) {
+    modifierModal.classList.add("modal-active");
+    document.body.style.position = 'fixed';
+
+    tableRows.forEach(row => {
+        let rowCols = row.querySelectorAll("td")
+        if(rowCols[0].textContent == id) {
+            document.querySelector("#tarifIdInput").value = id
+
+            Array.from(document.querySelector("#gares_dep-select-modif").options).forEach(opt => {
+                if(opt.value.toLowerCase() === rowCols[1].textContent.toLowerCase()) {
+                    opt.selected = true
+                }
+            })
+
+            Array.from(document.querySelector("#gares_arriv-select-modif").options).forEach(opt => {
+                if(opt.value.toLowerCase() === rowCols[2].textContent.toLowerCase()) {
+                    opt.selected = true
+                }
+            })
+
+            document.querySelector("#tarifInput").value = rowCols[3].textContent
+        }
+    })
+}
 
 
 

@@ -25,7 +25,7 @@
                         <span class="material-icons">group</span>
                         <a href="./utilisateurs.html">Utilisateurs</a>
                     </li>
-                    <li class="active">
+                    <li>
                         <span class="material-icons">place</span>
                         <a href="./gares.html">Gares</a>
                     </li>
@@ -37,7 +37,7 @@
                         <span class="material-icons">route</span>
                         <a href="./trajets.html">Trajets</a>
                     </li>
-                    <li>
+                    <li class="active">
                         <span class="material-icons">request_quote</span>
                         <a href="./tarifs.html">Tarifs</a>
                     </li>
@@ -77,10 +77,10 @@
             <div id="main-content">
                 <div class="container">
                     <div class="crud-header">
-                        <h3>Liste des gares</h3>
+                        <h3>Liste des tarifs</h3>
                         <div class="crud-header-actions">
                             <input id="recherche-input" type="text" name="recherche" placeholder="Rechercher">
-                            <button id="ajouter-btn" class="btn btn-orange-alt">Ajouter une gare</button>
+                            <button id="ajouter-btn" class="btn btn-orange-alt">Ajouter un tarif</button>
                         </div>
                     </div>
                     <div class="crud-body">
@@ -88,44 +88,40 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Nom</th>
-                                    <th>Ville</th>
-                                    <th>Adresse</th>
-                                    <th>Tel</th>
+                                    <th>Gare départ</th>
+                                    <th>Gare arrivée</th>
+                                    <th>Tatif</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>1</td>
-                                    <td>Gare de settat</td>
                                     <td>Settat</td>
-                                    <td>Settat av 15</td>
-                                    <td>0600000000</td>
+                                    <td>Casa</td>
+                                    <td>25</td>
                                     <td>
-                                        <span onclick="modifierGare(1)" class="material-icons action">edit</span>
+                                        <span onclick="modifierTarif(1)" class="material-icons action">edit</span>
                                         <span onclick="supprimerElement(1)" class="material-icons action">delete</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>2</td>
-                                    <td>Gare de Berrchid</td>
+                                    <td>Settat</td>
                                     <td>Berrchid</td>
-                                    <td>Berrchid av 15</td>
-                                    <td>0600000000</td>
+                                    <td>15</td>
                                     <td>
-                                        <span onclick="modifierGare(2)" class="material-icons action">edit</span>
+                                        <span onclick="modifierTarif(2)" class="material-icons action">edit</span>
                                         <span onclick="supprimerElement(2)" class="material-icons action">delete</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>3</td>
-                                    <td>Ouled Ziane</td>
-                                    <td>Casablanca</td>
-                                    <td>Casablanca av 15</td>
-                                    <td>0600000000</td>
+                                    <td>Casa</td>
+                                    <td>Settat</td>
+                                    <td>25</td>
                                     <td>
-                                        <span onclick="modifierGare(3)" class="material-icons action">edit</span>
+                                        <span onclick="modifierTarif(3)" class="material-icons action">edit</span>
                                         <span onclick="supprimerElement(3)" class="material-icons action">delete</span>
                                     </td>
                                 </tr>
@@ -140,24 +136,32 @@
     <div id="ajouter-modal" class="modal-container">
         <div class="modal">
             <div class="modal-header">
-                <h4 class="modal-titre">Ajouter Une Gare</h4>
+                <h4 class="modal-titre">Ajouter Un tarif</h4>
                 <span class="material-icons modal-close">close</span>
             </div>
             <div class="modal-body">
                 <form class="modal-form" action="" method="POST">
-                    <label for="nom">Nom: </label>
-                    <input type="text" name="nom" required>
 
-                    <label for="ville">Ville: </label>
-                    <select id="villes-select-ajt" name="ville" required>
-                        <option value="">Selectionner une ville</option>
+                    <label for="gare_dep">Gare de départ: </label>
+                    <select id="gares_dep-select" name="gare_dep" required>
+                        <option value="">Selectionner une gare</option>
+                        <option value="settat">Settat</option>
+                        <option value="casa">Casa</option>
+                        <option value="berrchid">Berrchid</option>
+                        <!-- Generer avec asp d'apres le tableau gares -->
                     </select>
 
-                    <label for="adresse">Adresse: </label>
-                    <input type="text" name="adresse" required>
+                    <label for="gare_arriv">Gare d'arrivée: </label>
+                    <select id="gares_arriv-select" name="gare_arriv" required>
+                        <option value="">Selectionner une gare</option>
+                        <option value="settat">Settat</option>
+                        <option value="casa">Casa</option>
+                        <option value="berrchid">Berrchid</option>
+                        <!-- Generer avec asp d'apres le tableau gares -->
+                    </select>
 
-                    <label for="tel">Tel: </label>
-                    <input type="number" name="tel" required>
+                    <label for="tarif">Tarif: </label>
+                    <input type="number" step=".01" name="tarif" required>
 
                     <input class="btn btn-orange" type="submit" value="Ajouter">
                 </form>
@@ -171,27 +175,35 @@
     <div id="modifier-modal" class="modal-container">
         <div class="modal">
             <div class="modal-header">
-                <h4 class="modal-titre">Modifier Gare: </h4>
+                <h4 class="modal-titre">Modifier autocar: </h4>
                 <span class="material-icons modal-close">close</span>
             </div>
             <div class="modal-body">
                 <form class="modal-form" action="" method="POST">
-                    <label for="gareNomInput">Nom: </label>
-                    <input id="gareNomInput" type="text" name="nom" required>
-
-                    <label for="villes-select">Ville: </label>
-                    <select id="villes-select-modif" name="ville" required>
-                        <option value="">Selectionner une ville</option>
+                    
+                    <label for="gares_dep-select-modif">Gare de départ: </label>
+                    <select id="gares_dep-select-modif" name="gare_dep" required>
+                        <option value="">Selectionner une gare</option>
+                        <option value="settat">Settat</option>
+                        <option value="casa">Casa</option>
+                        <option value="berrchid">Berrchid</option>
+                        <!-- Generer avec asp d'apres le tableau gares -->
                     </select>
 
-                    <label for="gareAdresseInput">Adresse: </label>
-                    <input id="gareAdresseInput" type="text" name="adresse" required>
+                    <label for="gares_arriv-select-modif">Gare d'arrivée: </label>
+                    <select id="gares_arriv-select-modif" name="gare_arriv" required>
+                        <option value="">Selectionner une gare</option>
+                        <option value="settat">Settat</option>
+                        <option value="casa">Casa</option>
+                        <option value="berrchid">Berrchid</option>
+                        <!-- Generer avec asp d'apres le tableau gares -->
+                    </select>
 
-                    <label for="gareTelInput">Tel: </label>
-                    <input id="gareTelInput" type="number" name="tel" required>
+                    <label for="tarifInput">Tarif </label>
+                    <input id="tarifInput" type="number" step=".01" name="tarif" required>
 
                     <input class="btn btn-orange" type="submit" value="Modifier">
-                    <input id="gareIdInput" type="text" name="id" hidden required>
+                    <input id="tarifIdInput" type="text" name="id" hidden required>
                 </form>
             </div>
             <div class="modal-footer">
@@ -206,23 +218,5 @@
 
     <script src="./ressources/js/main.js"></script>
     <script src="./ressources/js/crud.js"></script>
-    <script type="module">
-        // Chargement Villes Select 
-        import data from './ressources/js/data.js'
-        const villesSelectAjt = document.querySelector("#villes-select-ajt");
-        const villesSelectModif = document.querySelector("#villes-select-modif");
-
-        data.villes.forEach(ville => {
-            let option1 = document.createElement("option");
-            option1.value = ville.toLowerCase();
-            option1.innerText = ville.toUpperCase();
-            villesSelectAjt.appendChild(option1);
-
-            let option2 = document.createElement("option");
-            option2.value = ville.toLowerCase();
-            option2.innerText = ville.toUpperCase();
-            villesSelectModif.appendChild(option2);
-        });
-    </script>
 </body>
 </html>
