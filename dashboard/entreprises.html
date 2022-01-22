@@ -25,11 +25,11 @@
                         <span class="material-icons">group</span>
                         <a href="/dashboard/utilisateurs.html">Utilisateurs</a>
                     </li>
-                    <li class="active">
+                    <li>
                         <span class="material-icons">place</span>
                         <a href="/dashboard/gares.html">Gares</a>
                     </li>
-                    <li>
+                    <li class="active">
                         <span class="material-icons">business</span>
                         <a href="/dashboard/entreprises.html">Entreprises</a>
                     </li>
@@ -77,10 +77,10 @@
             <div id="main-content">
                 <div class="container">
                     <div class="crud-header">
-                        <h3>Liste des gares</h3>
+                        <h3>Liste des entreprises</h3>
                         <div class="crud-header-actions">
                             <input id="recherche-input" type="text" name="recherche" placeholder="Rechercher">
-                            <button id="ajouter-btn" class="btn btn-orange-alt">Ajouter une gare</button>
+                            <button id="ajouter-btn" class="btn btn-orange-alt">Ajouter une entreprise</button>
                         </div>
                     </div>
                     <div class="crud-body">
@@ -89,7 +89,6 @@
                                 <tr>
                                     <th>Id</th>
                                     <th>Nom</th>
-                                    <th>Ville</th>
                                     <th>Adresse</th>
                                     <th>Tel</th>
                                     <th>Actions</th>
@@ -98,34 +97,31 @@
                             <tbody>
                                 <tr>
                                     <td>1</td>
-                                    <td>Gare de settat</td>
-                                    <td>Settat</td>
+                                    <td>Ghazala</td>
                                     <td>Settat av 15</td>
                                     <td>0600000000</td>
                                     <td>
-                                        <span onclick="modifierGare(1)" class="material-icons action">edit</span>
+                                        <span onclick="modifierEntreprise(1)" class="material-icons action">edit</span>
                                         <span onclick="supprimerElement(1)" class="material-icons action">delete</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>2</td>
-                                    <td>Gare de Berrchid</td>
-                                    <td>Berrchid</td>
+                                    <td>UHP</td>
                                     <td>Berrchid av 15</td>
                                     <td>0600000000</td>
                                     <td>
-                                        <span onclick="modifierGare(2)" class="material-icons action">edit</span>
+                                        <span onclick="modifierEntreprise(2)" class="material-icons action">edit</span>
                                         <span onclick="supprimerElement(2)" class="material-icons action">delete</span>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>3</td>
-                                    <td>Ouled Ziane</td>
-                                    <td>Casablanca</td>
+                                    <td>CTM</td>
                                     <td>Casablanca av 15</td>
                                     <td>0600000000</td>
                                     <td>
-                                        <span onclick="modifierGare(3)" class="material-icons action">edit</span>
+                                        <span onclick="modifierEntreprise(3)" class="material-icons action">edit</span>
                                         <span onclick="supprimerElement(3)" class="material-icons action">delete</span>
                                     </td>
                                 </tr>
@@ -140,18 +136,13 @@
     <div id="ajouter-modal" class="modal-container">
         <div class="modal">
             <div class="modal-header">
-                <h4 class="modal-titre">Ajouter Une Gare</h4>
+                <h4 class="modal-titre">Ajouter Une Entreprise</h4>
                 <span class="material-icons modal-close">close</span>
             </div>
             <div class="modal-body">
                 <form class="modal-form" action="" method="POST">
                     <label for="nom">Nom: </label>
                     <input type="text" name="nom" required>
-
-                    <label for="ville">Ville: </label>
-                    <select id="villes-select-ajt" name="ville" required>
-                        <option value="">Selectionner une ville</option>
-                    </select>
 
                     <label for="adresse">Adresse: </label>
                     <input type="text" name="adresse" required>
@@ -171,27 +162,22 @@
     <div id="modifier-modal" class="modal-container">
         <div class="modal">
             <div class="modal-header">
-                <h4 class="modal-titre">Modifier Gare: </h4>
+                <h4 class="modal-titre">Modifier Entreprise: </h4>
                 <span class="material-icons modal-close">close</span>
             </div>
             <div class="modal-body">
                 <form class="modal-form" action="" method="POST">
-                    <label for="gareNomInput">Nom: </label>
-                    <input id="gareNomInput" type="text" name="nom" required>
+                    <label for="entrepriseNomInput">Nom: </label>
+                    <input id="entrepriseNomInput" type="text" name="nom" required>
 
-                    <label for="villes-select">Ville: </label>
-                    <select id="villes-select-modif" name="ville" required>
-                        <option value="">Selectionner une ville</option>
-                    </select>
+                    <label for="entrepriseAdresseInput">Adresse: </label>
+                    <input id="entrepriseAdresseInput" type="text" name="adresse" required>
 
-                    <label for="gareAdresseInput">Adresse: </label>
-                    <input id="gareAdresseInput" type="text" name="adresse" required>
-
-                    <label for="gareTelInput">Tel: </label>
-                    <input id="gareTelInput" type="number" name="tel" required>
+                    <label for="entrepriseTelInput">Tel: </label>
+                    <input id="entrepriseTelInput" type="number" name="tel" required>
 
                     <input class="btn btn-orange" type="submit" value="Modifier">
-                    <input id="gareIdInput" type="text" name="id" hidden required>
+                    <input id="entrepriseIdInput" type="text" name="id" hidden required>
                 </form>
             </div>
             <div class="modal-footer">
@@ -205,24 +191,6 @@
     </form>
 
     <script src="./ressources/js/main.js"></script>
-    <script src="./ressources/js/crud.js"></script>
-    <script type="module">
-        // Chargement Villes Select 
-        import data from './ressources/js/data.js'
-        const villesSelectAjt = document.querySelector("#villes-select-ajt");
-        const villesSelectModif = document.querySelector("#villes-select-modif");
-
-        data.villes.forEach(ville => {
-            let option1 = document.createElement("option");
-            option1.value = ville.toLowerCase();
-            option1.innerText = ville.toUpperCase();
-            villesSelectAjt.appendChild(option1);
-
-            let option2 = document.createElement("option");
-            option2.value = ville.toLowerCase();
-            option2.innerText = ville.toUpperCase();
-            villesSelectModif.appendChild(option2);
-        });
-    </script>
+    <script type="module" src="./ressources/js/crud.js"></script>
 </body>
 </html>

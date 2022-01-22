@@ -5,7 +5,19 @@ burgerMenuBtn.onclick = (e) => {
     sideMenu.classList.toggle("menu-hidden");
 }
 
+function hideMenuSmallScreen() {
+    let width = window.innerWidth
+    || document.documentElement.clientWidth
+    || document.body.clientWidth;
 
+    if(width <= 768) {
+        if(!sideMenu.classList.contains("menu-hidden")) {
+            sideMenu.classList.add("menu-hidden");
+        }
+    }
+}
+hideMenuSmallScreen();
+window.onresize = hideMenuSmallScreen;
 
 
 // Modals
@@ -28,6 +40,5 @@ modals.forEach(modal => {
 closeModalBtns.forEach(e => {
     e.addEventListener("click", (e) => {
         closeModal(e.target.parentNode.parentNode.parentNode);
-        console.log(e.target.parentNode.parentNode.parentNode)
     });
 });

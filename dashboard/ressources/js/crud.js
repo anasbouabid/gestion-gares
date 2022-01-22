@@ -17,18 +17,6 @@ rechercheInput.onkeyup = (e) => {
     }
 }
 
-// Chargement Villes Select 
-import data from './data.js'
-const villesSelect = document.querySelectorAll("#villes-select");
-
-data.villes.forEach(ville => {
-    let option = document.createElement("option");
-    option.value = ville.toLowerCase();
-    option.innerText = ville.toUpperCase();
-    villesSelect[0].appendChild(option);
-    villesSelect[1].appendChild(option);
-});
-
 
 // Modals
 const ajouterBtn = document.querySelector("#ajouter-btn");
@@ -56,7 +44,7 @@ function modifierGare(id) {
             document.querySelector("#gareIdInput").value = id
             document.querySelector("#gareNomInput").value = rowCols[1].textContent
 
-            Array.from(document.querySelectorAll("#villes-select")[1].options).forEach(opt => {
+            Array.from(document.querySelector("#villes-select-modif").options).forEach(opt => {
                 if(opt.value.toLowerCase() === rowCols[2].textContent.toLowerCase()) {
                     opt.selected = true
                 }
@@ -71,7 +59,48 @@ function modifierGare(id) {
 window.modifierGare = modifierGare
 
 
+function modifierEntreprise(id) {
+    modifierModal.classList.add("modal-active");
+    document.body.style.position = 'fixed';
 
+    tableRows.forEach(row => {
+        let rowCols = row.querySelectorAll("td")
+        if(rowCols[0].textContent == id) {
+            document.querySelector("#entrepriseIdInput").value = id
+            document.querySelector("#entrepriseNomInput").value = rowCols[1].textContent
+            document.querySelector("#entrepriseAdresseInput").value = rowCols[2].textContent
+            document.querySelector("#entrepriseTelInput").value = rowCols[3].textContent
+        }
+    })
+}
+window.modifierEntreprise = modifierEntreprise
+
+
+function modifierAutocar(id) {
+    modifierModal.classList.add("modal-active");
+    document.body.style.position = 'fixed';
+
+    tableRows.forEach(row => {
+        let rowCols = row.querySelectorAll("td")
+        if(rowCols[0].textContent == id) {
+            document.querySelector("#autocarIdInput").value = id
+            document.querySelector("#autocarChauffeurInput").value = rowCols[1].textContent
+            document.querySelector("#autocarMatriculeInput").value = rowCols[2].textContent
+            document.querySelector("#autocarTelInput").value = rowCols[3].textContent
+
+            Array.from(document.querySelector("#entreprises-select-modif").options).forEach(opt => {
+                if(opt.value.toLowerCase() === rowCols[4].textContent.toLowerCase()) {
+                    opt.selected = true
+                }
+            })
+
+            document.querySelector("#autocarNbrPlacesInput").value = rowCols[5].textContent
+            
+
+        }
+    })
+}
+window.modifierGare = modifierGare
 
 
 
