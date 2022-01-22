@@ -163,6 +163,55 @@ function modifierTarif(id) {
 
 
 
+function ajouterTrajetArret() {
+    let ligne = document.querySelector(".trajetArret");
+    let tableBody = document.querySelector("#tableAjouterTrajet tbody");
+
+    tableBody.appendChild(ligne.cloneNode(true))
+}
+function ajouterTrajetArretModif() {
+    let ligne = document.querySelector(".trajetArret");
+    let tableBody = document.querySelector("#tableModifierTrajet tbody");
+
+    tableBody.appendChild(ligne.cloneNode(true))
+}
+
+
+
+function modifierTrajet(id) {
+    modifierModal.classList.add("modal-active");
+    document.body.style.position = 'fixed';
+
+    tableRows.forEach(row => {
+        let rowCols = row.querySelectorAll("td")
+        if(rowCols[0].textContent == id) {
+            document.querySelector("#trajetIdInput").value = id
+            let trajetString = rowCols[1].textContent
+            let trajets = trajetString.split("-");
+
+
+            let ligne = document.querySelector(".trajetArret");
+            let tableBody = document.querySelector("#tableModifierTrajet tbody");
+            tableBody.innerHTML = ""
+            trajets.forEach(trajet => {
+                let newLigne = ligne.cloneNode(true)
+                let gare = trajet.split("_")[0]
+                let temps = trajet.split("_")[1]
+                Array.from(newLigne.querySelector(".gares_dep-select").options).forEach(opt => {
+                    if(opt.value.toLowerCase() === gare.toLowerCase()) {
+                        opt.selected = true
+                    }
+                })
+                newLigne.querySelector(".time").value = temps
+
+                tableBody.appendChild(newLigne)
+            })
+        }
+    })
+}
+
+
+
 
 
 function supprimerElement(id) {

@@ -41,3 +41,9 @@
     cursor: pointer;
     color: var(--orange);
 }
+
+#addStop {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
