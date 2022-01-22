@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de Bord</title>
+
+    <link rel="stylesheet" href="./ressources/css/styles.css">
+    <link rel="stylesheet" href="./ressources/css/crud.css">
+</head>
+<body>
+    <main>
+        <section id="side-menu">
+            <div class="nav-logo">
+                <h3>Logo</h3>
+            </div>
+            <nav>
+                <ul id="side-nav">
+                    <li>
+                        <span class="material-icons">dashboard</span>
+                        <a href="/dashboard/index.html">Dashboard</a>
+                    </li>
+                    <li>
+                        <span class="material-icons">group</span>
+                        <a href="/dashboard/utilisateurs.html">Utilisateurs</a>
+                    </li>
+                    <li>
+                        <span class="material-icons">place</span>
+                        <a href="/dashboard/gares.html">Gares</a>
+                    </li>
+                    <li>
+                        <span class="material-icons">business</span>
+                        <a href="/dashboard/entreprises.html">Entreprises</a>
+                    </li>
+                    <li>
+                        <span class="material-icons">route</span>
+                        <a href="/dashboard/trajets.html">Trajets</a>
+                    </li>
+                    <li>
+                        <span class="material-icons">request_quote</span>
+                        <a href="/dashboard/tarifs.html">Tarifs</a>
+                    </li>
+                    <li>
+                        <span class="material-icons">directions_bus_filled</span>
+                        <a href="/dashboard/autocars.html">Autocars</a>
+                    </li>
+                    <li class="active">
+                        <span class="material-icons">luggage</span>
+                        <a href="/dashboard/voyages.html">Voyages</a>
+                    </li>
+
+                    <div class="side-nav-bottom-element">
+                        <li>
+                            <span class="material-icons">home</span>
+                            <a href="/">Accueil</a>
+                        </li>
+                        <li>
+                            <span class="material-icons">logout</span>
+                            <a href="/logout">Se déconnecter</a>
+                        </li>
+                    </div>
+                </ul>
+            </nav>
+        </section>
+
+        <section id="main">
+            <div id="header">
+                <img id="burger-menu" src="./ressources/imgs/menu-burger.svg" alt="icone menu">
+
+                <a class="user" href="/dashboard/profile">
+                    <img src="./ressources/imgs/placeholder.png" alt="photo de profile">
+                    <span>Nom Prénom</span>
+                </a>
+            </div>
+
+            <div id="main-content">
+                <div class="container">
+                    <div class="crud-header">
+                        <h3>Liste des voyages</h3>
+                        <div class="crud-header-actions">
+                            <input id="recherche-input" type="text" name="recherche" placeholder="Rechercher">
+                            <button id="ajouter-btn" class="btn btn-orange-alt">Ajouter un voyage</button>
+                        </div>
+                    </div>
+                    <div class="crud-body">
+                        <table id="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Autocar</th>
+                                    <th>Trajet</th>
+                                    <th>Lundi</th>
+                                    <th>Mardi</th>
+                                    <th>Mercredi</th>
+                                    <th>Jeudi</th>
+                                    <th>Vendredi</th>
+                                    <th>Samedi</th>
+                                    <th>Dimanche</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>autocar_10</td>
+                                    <td>Settat_Casa</td>
+                                    <td>X</td>
+                                    <td>-</td>
+                                    <td>X</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>X</td>
+                                    <td>-</td>
+                                    <td>
+                                        <span onclick="modifierVoyage(1)" class="material-icons action">edit</span>
+                                        <span onclick="supprimerElement(1)" class="material-icons action">delete</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>autocar_36</td>
+                                    <td>Casa_Settat</td>
+                                    <td>X</td>
+                                    <td>X</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>-</td>
+                                    <td>X</td>
+                                    <td>
+                                        <span onclick="modifierVoyage(2)" class="material-icons action">edit</span>
+                                        <span onclick="supprimerElement(2)" class="material-icons action">delete</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Autocar_59</td>
+                                    <td>Berrchid_Settat</td>
+                                    <td>X</td>
+                                    <td>-</td>
+                                    <td>X</td>
+                                    <td>X</td>
+                                    <td>X</td>
+                                    <td>X</td>
+                                    <td>-</td>
+                                    <td>
+                                        <span onclick="modifierVoyage(3)" class="material-icons action">edit</span>
+                                        <span onclick="supprimerElement(3)" class="material-icons action">delete</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="ajouter-modal" class="modal-container">
+        <div class="modal">
+            <div class="modal-header">
+                <h4 class="modal-titre">Ajouter Un Voyage</h4>
+                <span class="material-icons modal-close">close</span>
+            </div>
+            <div class="modal-body">
+                <form class="modal-form" action="" method="POST">
+
+                    <label for="autocar">Autocar: </label>
+                    <select id="autocars-select" name="autocar" required>
+                        <option value="">Selectionner un autocar</option>
+                        <option value="autocar_10">autocar_10</option>
+                        <option value="autocar_36">autocar_36</option>
+                        <option value="autocar_59">autocar_59</option>
+                        <!-- Generer avec asp d'apres le tableau autocars -->
+                    </select>
+
+                    <label for="trajet">Trajet: </label>
+                    <select id="trajets-select" name="trajet" required>
+                        <option value="">Selectionner un trajet</option>
+                        <option value="settat_casa">settat_casa</option>
+                        <option value="casa_settat">casa_settat</option>
+                        <option value="berrchid_settat">berrchid_settat</option>
+                        <!-- Generer avec asp d'apres le tableau trajets -->
+                    </select>
+
+                    <label for="Jours">Jours: </label>
+                    <div>
+                        <input type="checkbox" name="jours" value="lundi" id="lundi">
+                        <label for="lundi">Lundi </label>
+    
+                        <input type="checkbox" name="jours" value="mardi" id="mardi">
+                        <label for="mardi">Mardi </label>
+    
+                        <input type="checkbox" name="jours" value="mercredi" id="mercredi">
+                        <label for="mercredi">Mercredi </label>
+                        
+                        <input type="checkbox" name="jours" value="jeudi" id="jeudi">
+                        <label for="jeudi">Jeudi </label>
+                        
+                        <input type="checkbox" name="jours" value="vendredi" id="vendredi">
+                        <label for="vendredi">Vendredi </label>
+                        
+                        <input type="checkbox" name="jours" value="samedi" id="samedi">
+                        <label for="samedi">Samedi </label>
+                        
+                        <input type="checkbox" name="jours" value="dimanche" id="dimanche">
+                        <label for="dimanche">Dimanche </label>
+                    </div>
+
+                    <input class="btn btn-orange" type="submit" value="Ajouter">
+                </form>
+            </div>
+            <div class="modal-footer">
+                
+            </div>
+        </div>
+    </div>
+
+    <div id="modifier-modal" class="modal-container">
+        <div class="modal">
+            <div class="modal-header">
+                <h4 class="modal-titre">Modifier voyage: </h4>
+                <span class="material-icons modal-close">close</span>
+            </div>
+            <div class="modal-body">
+                <form class="modal-form" action="" method="POST">
+
+                    <label for="entreprises-select-modif">Autocar: </label>
+                    <select id="autocars-select-modif" name="autocar" required>
+                        <option value="">Selectionner un autocar</option>
+                        <option value="autocar_10">autocar_10</option>
+                        <option value="autocar_36">autocar_36</option>
+                        <option value="autocar_59">autocar_59</option>
+                        <!-- Generer avec asp d'apres le tableau autocars -->
+                    </select>
+
+                    <label for="trajet">Trajet: </label>
+                    <select id="trajets-select-modif" name="trajet" required>
+                        <option value="">Selectionner un trajet</option>
+                        <option value="settat_casa">settat_casa</option>
+                        <option value="casa_settat">casa_settat</option>
+                        <option value="berrchid_settat">berrchid_settat</option>
+                        <!-- Generer avec asp d'apres le tableau trajets -->
+                    </select>
+
+                    <label for="Jours">Jours: </label>
+                    <div>
+                        <input type="checkbox" name="jours" value="lundi" id="jour-1">
+                        <label for="jour-1">Lundi </label>
+    
+                        <input type="checkbox" name="jours" value="mardi" id="jour-2">
+                        <label for="jour-2">Mardi </label>
+    
+                        <input type="checkbox" name="jours" value="mercredi" id="jour-3">
+                        <label for="jour-3">Mercredi </label>
+                        
+                        <input type="checkbox" name="jours" value="jeudi" id="jour-4">
+                        <label for="jour-4">Jeudi </label>
+                        
+                        <input type="checkbox" name="jours" value="vendredi" id="jour-5">
+                        <label for="jour-5">Vendredi </label>
+                        
+                        <input type="checkbox" name="jours" value="samedi" id="jour-6">
+                        <label for="jour-6">Samedi </label>
+                        
+                        <input type="checkbox" name="jours" value="dimanche" id="jour-7">
+                        <label for="jour-7">Dimanche </label>
+                    </div>
+                    
+                    <input class="btn btn-orange" type="submit" value="Modifier">
+                    <input id="voyageIdInput" type="text" name="id" hidden required>
+                </form>
+            </div>
+            <div class="modal-footer">
+                
+            </div>
+        </div>
+    </div>
+
+    <form id="supprimer-form" action="" method="POST">
+        <input id="elementIdInput" type="text" name="id" hidden required>
+    </form>
+
+    <script src="./ressources/js/main.js"></script>
+    <script src="./ressources/js/crud.js"></script>
+</body>
+</html>

@@ -103,6 +103,41 @@ function modifierAutocar(id) {
 window.modifierGare = modifierGare
 
 
+function modifierVoyage(id) {
+    modifierModal.classList.add("modal-active");
+    document.body.style.position = 'fixed';
+
+    tableRows.forEach(row => {
+        let rowCols = row.querySelectorAll("td")
+        if(rowCols[0].textContent == id) {
+            document.querySelector("#voyageIdInput").value = id
+
+            Array.from(document.querySelector("#autocars-select-modif").options).forEach(opt => {
+                if(opt.value.toLowerCase() === rowCols[1].textContent.toLowerCase()) {
+                    opt.selected = true
+                }
+            })
+
+            Array.from(document.querySelector("#trajets-select-modif").options).forEach(opt => {
+                if(opt.value.toLowerCase() === rowCols[2].textContent.toLowerCase()) {
+                    opt.selected = true
+                }
+            })
+
+            for(let i=3; i<10; i++) {
+                if(rowCols[i].textContent === "X") {
+                    document.querySelector(`#jour-${i-2}`).checked = true
+                }else {
+                    document.querySelector(`#jour-${i-2}`).checked = false
+                }
+            }            
+
+        }
+    })
+}
+window.modifierGare = modifierGare
+
+
 
 
 
