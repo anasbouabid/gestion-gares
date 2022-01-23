@@ -48,7 +48,9 @@ closeModalBtns.forEach(e => {
 const page = location.href.split("/")[location.href.split("/").length - 1].split(".")[0]
 const sideNav = document.querySelector("#side-nav")
 sideNav.querySelectorAll("li").forEach(el => {
-    if(el.querySelector("a").href.includes(page)) {
+    let link = el.querySelector("a").href.split("/")[el.querySelector("a").href.split("/").length - 1]
+    console.log(link)
+    if(link.includes(page)) {
         el.classList.add("active");
     }
     if(location.pathname[location.pathname.length - 1] === "/") {
