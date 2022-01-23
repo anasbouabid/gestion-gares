@@ -72,9 +72,169 @@
                     <span>Nom Prénom</span>
                 </a>
             </div>
+
+            <div id="main-content" class="dashboard">
+                <div class="widget" id="numUsers">
+                   <div>
+                       <canvas id="myCanvas"></canvas>
+                   </div>
+                </div>
+
+                <div class="widget">
+                    <a href="./gares.html">
+                        <span class="material-icons">place</span>
+                        <br>
+                        <h4>49 Gares</h4>
+                    </a>
+                </div>
+
+                <div class="widget">
+                    <a href="./entreprises.html">
+                        <span class="material-icons">business</span>
+                        <br>
+                        <h4>49 Entreprises</h4>
+                    </a>
+                </div>
+
+                <div class="widget">
+                    <a href="./trajets.html">
+                        <span class="material-icons">route</span>
+                        <br>
+                        <h4>49 Trajets</h4>
+                    </a>
+                </div>
+
+                <div class="widget">
+                    <a href="./tarifs.html">
+                        <span class="material-icons">request_quote</span>
+                        <br>
+                        <h4>49 Tarifs</h4>
+                    </a>
+                </div>
+
+                <div class="widget">
+                    <a href="./autocars.html">
+                        <span class="material-icons">directions_bus_filled</span>
+                        <br>
+                        <h4>49 Autocars</h4>
+                    </a>
+                </div>
+
+                <div class="widget">
+                    <a href="./voyages.html">
+                        <span class="material-icons">luggage</span>
+                        <br>
+                        <h4>49 Voyages</h4>
+                    </a>
+                </div>
+            </div>
         </section>
     </main>
 
     <script src="./ressources/js/main.js"></script>
+
+    <script>
+        // PIE CHART
+        let myCanvas = document.getElementById("myCanvas");
+        myCanvas.width = 200;
+        myCanvas.height = 200;
+
+        let ctx = myCanvas.getContext("2d");
+
+        function drawLine(ctx, startX, startY, endX, endY){
+            ctx.beginPath();
+            ctx.moveTo(startX,startY);
+            ctx.lineTo(endX,endY);
+            ctx.stroke();
+        }
+
+        function drawArc(ctx, centerX, centerY, radius, startAngle, endAngle){
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+            ctx.stroke();
+        }
+
+        function drawPieSlice(ctx,centerX, centerY, radius, startAngle, endAngle, color ){
+            ctx.fillStyle = color;
+            ctx.beginPath();
+            ctx.moveTo(centerX,centerY);
+            ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+            ctx.closePath();
+            ctx.fill();
+        }
+
+        let usersInfo = {
+            "Admins": 13, // Changer les valeurs 13, 54 et 300 avec asp
+            "Managers": 54,
+            "Clients": 300,
+        };
+
+        let Piechart = function(options){
+            this.options = options;
+            this.canvas = options.canvas;
+            this.ctx = this.canvas.getContext("2d");
+            this.colors = options.colors;
+
+            this.draw = function(){
+                let total_value = 0;
+                let color_index = 0;
+                for (let categ in this.options.data){
+                    let val = this.options.data[categ];
+                    total_value += val;
+                }
+
+                let start_angle = 0;
+                for (categ in this.options.data){
+                    val = this.options.data[categ];
+                    let slice_angle = 2 * Math.PI * val / total_value;
+
+                    drawPieSlice(
+                        this.ctx,
+                        this.canvas.width/2,
+                        this.canvas.height/2,
+                        Math.min(this.canvas.width/2,this.canvas.height/2),
+                        start_angle,
+                        start_angle+slice_angle,
+                        this.colors[color_index%this.colors.length]
+                    );
+
+                    start_angle += slice_angle;
+                    color_index++;
+                }
+
+            }
+        }
+        let myPiechart = new Piechart(
+            {
+                canvas:myCanvas,
+                data:usersInfo,
+                colors:["#fde23e","#f16e23", "#57d9ff"]
+            }
+        );
+        myPiechart.draw();
+
+        let numAdmins = document.createElement("span");
+        numAdmins.textContent = usersInfo.Admins + " Admins | "
+        numAdmins.style.color = "#fde23e";
+
+        let numManagers = document.createElement("span");
+        numManagers.textContent = usersInfo.Managers + "Managers | "
+        numManagers.style.color = "#f16e23";
+
+        let numClients = document.createElement("span");
+        numClients.textContent = usersInfo.Clients + "Clients"
+        numClients.style.color = "#57d9ff";
+
+        let paragraph = document.createElement("p");
+        paragraph.style.fontSize= "1.6rem"
+        paragraph.style.fontWeight = "700"
+        paragraph.appendChild(numAdmins)
+        paragraph.appendChild(numManagers)
+        paragraph.appendChild(numClients)
+
+        console.log(paragraph)
+
+        myPiechart.canvas.parentElement.appendChild(paragraph)
+    </script>
 </body>
 </html>
