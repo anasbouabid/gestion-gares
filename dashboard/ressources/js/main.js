@@ -42,3 +42,13 @@ closeModalBtns.forEach(e => {
         closeModal(e.target.parentNode.parentNode.parentNode);
     });
 });
+
+
+// Ajouter class active au lien automatiquement
+const page = location.href.split("/")[location.href.split("/").length - 1].split(".")[0]
+const sideNav = document.querySelector("#side-nav")
+sideNav.querySelectorAll("li").forEach(el => {
+    if(el.querySelector("a").href.includes(page)) {
+        el.classList.add("active");
+    }
+})

@@ -211,36 +211,6 @@ function modifierTrajet(id) {
 }
 
 
-
-document.querySelector("#types-select-ajt").addEventListener("change", e => {
-    const entreprisesSelect = document.querySelector("#entreprise-select-ajt")
-    const entreprisesSelectLabel = document.querySelector("#entreprise-select-ajt-label")
-    if(e.target.value === "manager") {
-        entreprisesSelect.style.display = "initial"
-        entreprisesSelectLabel.style.display = "initial"
-        entreprisesSelect.disabled = false
-
-    }else {
-        entreprisesSelect.style.display = "none"
-        entreprisesSelectLabel.style.display = "none"
-        entreprisesSelect.disabled = true
-
-    }
-})
-document.querySelector("#types-select-modif").addEventListener("change", e => {
-    const entreprisesSelect = document.querySelector("#entreprise-select-modif")
-    const entreprisesSelectLabel = document.querySelector("#entreprise-select-modif-label")
-    if(e.target.value === "manager") {
-        entreprisesSelect.style.display = "initial"
-        entreprisesSelectLabel.style.display = "initial"
-        entreprisesSelect.disabled = false
-    }else {
-        entreprisesSelect.style.display = "none"
-        entreprisesSelectLabel.style.display = "none"
-        entreprisesSelect.disabled = true
-
-    }
-})
 function modifierUtilisateur(id) {
     modifierModal.classList.add("modal-active");
     document.body.style.position = 'fixed';
