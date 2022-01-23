@@ -72,6 +72,8 @@ function modifierEntreprise(id) {
         }
     })
 }
+window.modifierEntreprise = modifierEntreprise
+
 
 
 function modifierAutocar(id) {
@@ -98,6 +100,8 @@ function modifierAutocar(id) {
         }
     })
 }
+window.modifierAutocar = modifierAutocar
+
 
 
 function modifierVoyage(id) {
@@ -132,6 +136,8 @@ function modifierVoyage(id) {
         }
     })
 }
+window.modifierVoyage = modifierVoyage
+
 
 
 
@@ -160,6 +166,8 @@ function modifierTarif(id) {
         }
     })
 }
+window.modifierTarif = modifierTarif
+
 
 
 
