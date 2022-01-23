@@ -1,0 +1,141 @@
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Plateform de consultation des horraires et reservation des ticket d'autocars">
+    <meta name="keywords" content="Ticket, Billet, Autocar, garres, gare routières, horraires">
+
+    <link rel="stylesheet" href="./ressources/css/styles.css">
+    <link rel="icon" type="" href="./ressources//imgs/favicon.png">
+
+    <title>Gestion des gares routières</title>
+</head>
+<body>
+    <header>
+        <span class="logo">Logo</span>
+        <nav>
+            <ul id="nav-list">
+                <li><a href="#">Qui nous somme</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="">man3rf</a></li>
+                <li><a id="connexion-btn" href="#">Connexion</a></li>
+                <li><a id="inscription-btn" href="#">Inscription</a></li>
+                <li class="menu-mobile-icon">
+                    <a class="toggle-menu" href="#">
+                        <img src="./ressources/imgs/menu-burger.svg" alt="menu burger icone">
+                    </a>
+                </li>
+            </ul>
+
+            <ul id="mobile-nav">
+                <li><a href="#">Qui nous somme</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="">man3rf</a></li>
+                <li><a id="connexion-btn" href="#">Connexion</a></li>
+                <li><a id="inscription-btn" href="#">Inscription</a></li>
+                <li class="menu-mobile-icon">
+                    <a class="toggle-menu" href="#">
+                        <img src="./ressources/imgs/close.svg" alt="menu close">
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="container">
+            <h3><span>Settat</span> > Casablanca</h3>
+        </section>
+    </main>
+
+    <footer>
+        <div class="sm-icons">
+            <a href="">
+                <img src="./ressources/imgs/facebook.svg" alt="icone facebook">
+            </a>
+            <a href="">
+                <img src="./ressources/imgs/instagram.svg" alt="icone instagram">
+            </a>
+            <a href="">
+                <img src="./ressources/imgs/twitter.svg" alt="icone twitter">
+            </a>
+            <a href="">
+                <img src="./ressources/imgs/youtube.svg" alt="icone youtube">
+            </a>
+        </div>
+
+        <div>
+            <p class="copyright">© 2021 Gestion Gares - Tous droits réservés</p>
+        </div>
+    </footer>
+
+    <!--Modals-->
+    <div id="connexion-modal" class="modal-container">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-titre">Connectez-vous avec votre compte</h3>
+                <img class="modal-close" src="./ressources/imgs/close.svg" alt="modal close">
+            </div>
+            <div class="modal-body">
+                <form id="connexion-form" action="/login" method="POST">
+                    <label for="email">Email: </label>
+                    <input type="email" name="email" required>
+
+                    <label for="mdp">Mot de passe: </label>
+                    <input type="password" name="mdp" required>
+
+                    <input class="btn btn-orange" type="submit" value="Connexion">
+                </form>
+            </div>
+            <div class="modal-footer">
+                
+            </div>
+        </div>
+    </div>
+
+
+    <div id="inscription-modal" class="modal-container">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-titre">Créez votre compte</h3>
+                <img class="modal-close" src="./ressources/imgs/close.svg" alt="modal close">
+            </div>
+            <div class="modal-body">
+                <form id="inscription-form" action="/register" method="POST">
+                    <label for="nom">Nom: </label>
+                    <input type="text" name="nom" required>
+
+                    <label for="prenom">Prénom: </label>
+                    <input type="text" name="prenom" required>
+
+                    <label for="email">Email: </label>
+                    <input type="email" name="email" required>
+
+                    <label for="mdp1">Mot de passe: </label>
+                    <input type="password" name="mdp1" required>
+
+                    <label for="mdp2">Mot de passe: </label>
+                    <input type="password" name="mdp2" required>
+
+                    <label for="mdp">Sexe: </label>
+                    <div class="sexe">
+                        <input type="radio" name="sexe" id="radio-homme" value="homme" required>
+                        <label for="radio-homme">Homme</label>
+                        <input type="radio" name="sexe" id="radio-femme" value="femme" required>
+                        <label for="radio-femme">Femme</label>
+                    </div>
+
+                    <input class="btn btn-orange" type="submit" value="Inscription">
+                </form>
+            </div>
+            <div class="modal-footer">
+                
+            </div>
+        </div>
+    </div>
+    <!-- /Modals -->
+
+    <script src="./ressources/js/index.js"></script>
+</body>
+</html>

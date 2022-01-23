@@ -51,4 +51,10 @@ sideNav.querySelectorAll("li").forEach(el => {
     if(el.querySelector("a").href.includes(page)) {
         el.classList.add("active");
     }
+    if(location.pathname === "/dashboard/") {
+        el.classList.remove("active");
+        sideNav.querySelectorAll("li")[0].classList.add("active")
+    }
 })
+
+document.querySelector(".side-nav-bottom-element").querySelector("li").classList.remove("active")
