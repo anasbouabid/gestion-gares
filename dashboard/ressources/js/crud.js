@@ -212,6 +212,84 @@ function modifierTrajet(id) {
 
 
 
+document.querySelector("#types-select-ajt").addEventListener("change", e => {
+    const entreprisesSelect = document.querySelector("#entreprise-select-ajt")
+    const entreprisesSelectLabel = document.querySelector("#entreprise-select-ajt-label")
+    if(e.target.value === "manager") {
+        entreprisesSelect.style.display = "initial"
+        entreprisesSelectLabel.style.display = "initial"
+        entreprisesSelect.disabled = false
+
+    }else {
+        entreprisesSelect.style.display = "none"
+        entreprisesSelectLabel.style.display = "none"
+        entreprisesSelect.disabled = true
+
+    }
+})
+document.querySelector("#types-select-modif").addEventListener("change", e => {
+    const entreprisesSelect = document.querySelector("#entreprise-select-modif")
+    const entreprisesSelectLabel = document.querySelector("#entreprise-select-modif-label")
+    if(e.target.value === "manager") {
+        entreprisesSelect.style.display = "initial"
+        entreprisesSelectLabel.style.display = "initial"
+        entreprisesSelect.disabled = false
+    }else {
+        entreprisesSelect.style.display = "none"
+        entreprisesSelectLabel.style.display = "none"
+        entreprisesSelect.disabled = true
+
+    }
+})
+function modifierUtilisateur(id) {
+    modifierModal.classList.add("modal-active");
+    document.body.style.position = 'fixed';
+
+    tableRows.forEach(row => {
+        let rowCols = row.querySelectorAll("td")
+        if(rowCols[0].textContent == id) {
+            document.querySelector("#userIdInput").value = id
+
+            document.querySelector("#userNomInput").value = rowCols[1].textContent
+            document.querySelector("#userPrenomInput").value = rowCols[2].textContent
+            document.querySelector("#userEmailInput").value = rowCols[3].textContent
+
+            Array.from(document.querySelector("#sexe-select-modif").options).forEach(opt => {
+                if(opt.value.toLowerCase() === rowCols[4].textContent.toLowerCase()) {
+                    opt.selected = true
+                }
+            })
+
+            Array.from(document.querySelector("#types-select-modif").options).forEach(opt => {
+                if(opt.value.toLowerCase() === rowCols[5].textContent.toLowerCase()) {
+                    opt.selected = true
+                }
+            })
+
+
+            const entreprisesSelect = document.querySelector("#entreprise-select-modif")
+            const entreprisesSelectLabel = document.querySelector("#entreprise-select-modif-label")
+            if(document.querySelector("#types-select-modif").value === "manager") {
+                entreprisesSelect.style.display = "initial"
+                entreprisesSelectLabel.style.display = "initial"
+                entreprisesSelect.disabled = false
+
+                Array.from(entreprisesSelect.options).forEach(opt => {
+                    if(opt.value.toLowerCase() === rowCols[6].textContent.toLowerCase()) {
+                        opt.selected = true
+                    }
+                })
+            }else {
+                entreprisesSelect.style.display = "none"
+                entreprisesSelectLabel.style.display = "none"
+                entreprisesSelect.disabled = true
+            }
+        }
+    })
+}
+
+
+
 
 
 function supprimerElement(id) {

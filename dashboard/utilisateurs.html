@@ -7,6 +7,7 @@
     <title>Tableau de Bord</title>
 
     <link rel="stylesheet" href="./ressources/css/styles.css">
+    <link rel="stylesheet" href="./ressources/css/crud.css">
 </head>
 <body>
     <main>
@@ -16,11 +17,11 @@
             </div>
             <nav>
                 <ul id="side-nav">
-                    <li class="active">
+                    <li>
                         <span class="material-icons">dashboard</span>
                         <a href="./index.html">Dashboard</a>
                     </li>
-                    <li>
+                    <li class="active">
                         <span class="material-icons">group</span>
                         <a href="./utilisateurs.html">Utilisateurs</a>
                     </li>
@@ -42,7 +43,7 @@
                     </li>
                     <li>
                         <span class="material-icons">directions_bus_filled</span>
-                        <a href="./autocars.html">Autocar</a>
+                        <a href="./autocars.html">Autocars</a>
                     </li>
                     <li>
                         <span class="material-icons">luggage</span>
@@ -72,9 +73,190 @@
                     <span>Nom Prénom</span>
                 </a>
             </div>
+
+            <div id="main-content">
+                <div class="container">
+                    <div class="crud-header">
+                        <h3>Liste des utilisateurs</h3>
+                        <div class="crud-header-actions">
+                            <input id="recherche-input" type="text" name="recherche" placeholder="Rechercher">
+                            <button id="ajouter-btn" class="btn btn-orange-alt">Ajouter un utilisateur</button>
+                        </div>
+                    </div>
+                    <div class="crud-body">
+                        <table id="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Nom</th>
+                                    <th>Prénom</th>
+                                    <th>Email</th>
+                                    <th>Sexe</th>
+                                    <th>Privilège</th>
+                                    <th>Entreprise</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Bouabid</td>
+                                    <td>Anas</td>
+                                    <td>bouabidanas02@gmail.com</td>
+                                    <td>Homme</td>
+                                    <td>Admin</td>
+                                    <td>-</td>
+                                    <td>
+                                        <span onclick="modifierUtilisateur(1)" class="material-icons action">edit</span>
+                                        <span onclick="supprimerElement(1)" class="material-icons action">delete</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Ouzzine</td>
+                                    <td>Ismail</td>
+                                    <td>rajaouihhh@gmail.com</td>
+                                    <td>Homme</td>
+                                    <td>Manager</td>
+                                    <td>CTM</td>
+                                    <td>
+                                        <span onclick="modifierUtilisateur(2)" class="material-icons action">edit</span>
+                                        <span onclick="supprimerElement(2)" class="material-icons action">delete</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Chakrani</td>
+                                    <td>Younes</td>
+                                    <td>chakrani_younes@gmail.com</td>
+                                    <td>Homme</td>
+                                    <td>Client</td>
+                                    <td>-</td>
+                                    <td>
+                                        <span onclick="modifierUtilisateur(3)" class="material-icons action">edit</span>
+                                        <span onclick="supprimerElement(3)" class="material-icons action">delete</span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
+    <div id="ajouter-modal" class="modal-container">
+        <div class="modal">
+            <div class="modal-header">
+                <h4 class="modal-titre">Ajouter Un utilisateur</h4>
+                <span class="material-icons modal-close">close</span>
+            </div>
+            <div class="modal-body">
+                <form class="modal-form" action="" method="POST">
+                    <label for="nom">Nom: </label>
+                    <input type="text" name="nom" required>
+
+                    <label for="prenom">Prénom: </label>
+                    <input type="text" name="prenom" required>
+                    
+                    <label for="email">Email: </label>
+                    <input type="email" name="email" required>
+
+                    <label id="sexe-select-ajt-label" for="sexe">Sexe: </label>
+                    <select id="sexe-select-ajt" name="sexe" required>
+                        <option value="">Selectionner le sexe</option>
+                        <option value="homme">homme</option>
+                        <option value="femme">femme</option>
+                    </select>
+
+                    <label for="mdp1">Mot de passe: </label>
+                    <input type="password" name="mdp1" required>
+
+                    <label for="mdp2">Mot de passe: </label>
+                    <input type="password" name="mdp2" required>
+
+                    <label for="privilege">Privilège: </label>
+                    <select id="types-select-ajt" name="privilege" required>
+                        <option value="">Selectionner un privilège</option>
+                        <option value="admin">admin</option>
+                        <option value="manager">manager</option>
+                        <option value="client">client</option>
+                    </select>
+
+                    <label id="entreprise-select-ajt-label" for="entreprise">Entreprise: </label>
+                    <select id="entreprise-select-ajt" name="entreprise" required>
+                        <option value="">Selectionner une entreprise</option>
+                        <option value="CTM">CTM</option>
+                        <option value="ghazala">ghazala</option>
+                        <option value="uhp">uhp</option>
+                        <!-- Generer avec asp -->
+                    </select>
+
+                    <input class="btn btn-orange" type="submit" value="Ajouter">
+                </form>
+            </div>
+            <div class="modal-footer">
+                
+            </div>
+        </div>
+    </div>
+
+    <div id="modifier-modal" class="modal-container">
+        <div class="modal">
+            <div class="modal-header">
+                <h4 class="modal-titre">Modifier Utilisateur: </h4>
+                <span class="material-icons modal-close">close</span>
+            </div>
+            <div class="modal-body">
+                <form class="modal-form" action="" method="POST">
+                    <label for="userNomInput">Nom: </label>
+                    <input id="userNomInput" type="text" name="nom" required>
+
+                    <label for="userPrenomInput">Prénom: </label>
+                    <input id="userPrenomInput" type="text" name="prenom" required>
+                    
+                    <label for="userEmailInput">Email: </label>
+                    <input id="userEmailInput" type="email" name="email" required>
+
+                    <label id="sexe-select-modif-label" for="sexe">Sexe: </label>
+                    <select id="sexe-select-modif" name="sexe" required>
+                        <option value="">Selectionner le sexe</option>
+                        <option value="homme">homme</option>
+                        <option value="femme">femme</option>
+                    </select>
+
+                    <label for="privilege">Privilège: </label>
+                    <select id="types-select-modif" name="privilege" required>
+                        <option value="">Selectionner un privilège</option>
+                        <option value="admin">admin</option>
+                        <option value="manager">manager</option>
+                        <option value="client">client</option>
+                    </select>
+                    
+                    <label id="entreprise-select-modif-label" for="entreprise">Entreprise: </label>
+                    <select id="entreprise-select-modif" name="entreprise" required>
+                        <option value="">Selectionner une entreprise</option>
+                        <option value="CTM">CTM</option>
+                        <option value="Ghazala">Ghazala</option>
+                        <option value="uhp">uhp</option>
+                        <!-- Generer avec asp d'apres le tableau entreprises -->
+                    </select>
+
+                    <input class="btn btn-orange" type="submit" value="Modifier">
+                    <input id="userIdInput" type="text" name="id" hidden required>
+                </form>
+            </div>
+            <div class="modal-footer">
+                
+            </div>
+        </div>
+    </div>
+
+    <form id="supprimer-form" action="" method="POST">
+        <input id="elementIdInput" type="text" name="id" hidden required>
+    </form>
+
     <script src="./ressources/js/main.js"></script>
+    <script src="./ressources/js/crud.js"></script>
 </body>
 </html>

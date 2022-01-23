@@ -47,3 +47,11 @@
     justify-content: center;
     align-items: center;
 }
+
+
+#entreprise-select-ajt-label, #entreprise-select-ajt {
+    display: none;
+}
+#entreprise-select-modif-label, #entreprise-select-modif {
+    display: none;
+}
