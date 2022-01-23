@@ -51,9 +51,11 @@ sideNav.querySelectorAll("li").forEach(el => {
     if(el.querySelector("a").href.includes(page)) {
         el.classList.add("active");
     }
-    if(location.pathname === "/dashboard/") {
-        el.classList.remove("active");
-        sideNav.querySelectorAll("li")[0].classList.add("active")
+    if(location.pathname[location.pathname.length - 1] === "/") {
+        if(location.href.split("/")[location.href.split("/").length - 2] === "dashboard") {
+            el.classList.remove("active");
+            sideNav.querySelectorAll("li")[0].classList.add("active")
+        }
     }
 })
 
