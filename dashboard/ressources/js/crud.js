@@ -183,9 +183,6 @@ function ajouterTrajetArretModif() {
 
     tableBody.appendChild(ligne.cloneNode(true))
 }
-
-
-
 function modifierTrajet(id) {
     modifierModal.classList.add("modal-active");
     document.body.style.position = 'fixed';
@@ -217,6 +214,44 @@ function modifierTrajet(id) {
         }
     })
 }
+const formAjtTrajet = document.querySelector("#tableAjouterTrajet").parentElement;
+const formModifTrajet = document.querySelector("#tableModifierTrajet").parentElement;
+
+formAjtTrajet.addEventListener("submit", e => {
+    e.preventDefault()
+    verifierOrdre(e)
+})
+
+formModifTrajet.addEventListener("submit", e => {
+    e.preventDefault()
+    verifierOrdre(e)
+})
+
+function verifierOrdre(e) {
+    const rows = e.target.querySelectorAll("tbody tr");
+    console.log(rows)
+
+    if(rows.length > 1) {
+        for(let i=0; i<rows.length - 1; i++) {
+            let val1 = rows[i].querySelectorAll("td")[1].querySelector("input").value
+            let val2 = rows[i+1].querySelectorAll("td")[1].querySelector("input").value
+
+            // console.log(val1)
+            // console.log(val2)
+
+            // console.log(val1 > val2)
+
+            if(val1 > val2){
+                alert("Veuillez verifier que les temps de départ sont dans un ordre chronologique");
+                return;
+            }
+        }
+    }
+
+    e.target.submit()
+}
+
+
 
 
 function modifierUtilisateur(id) {

@@ -49,7 +49,6 @@ const page = location.href.split("/")[location.href.split("/").length - 1].split
 const sideNav = document.querySelector("#side-nav")
 sideNav.querySelectorAll("li").forEach(el => {
     let link = el.querySelector("a").href.split("/")[el.querySelector("a").href.split("/").length - 1]
-    console.log(link)
     if(link.includes(page)) {
         el.classList.add("active");
     }
